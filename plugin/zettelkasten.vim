@@ -1,14 +1,15 @@
 function! zettelkasten#CompleteFA(findstart, base)
-	if a:findstart
+	if a:findstart == 1
 python3 << EOF
-vars = vim.vvars
-
-print(vars)
+from zettelkasten import zettelkasten
+result = zettelkasten.find_match(vim.current.buffer)
 EOF
-		return 0
+		return py3eval('result')
 	else
 python3 << EOF
-result = ['Hallo Welt']
+import vim
+from zettelkasten import zettelkasten
+result = zettelkasten.propose_match(vim.eval('a:base'))
 EOF
 		return py3eval('result')
 	endif
