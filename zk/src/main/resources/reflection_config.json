@@ -1,0 +1,10 @@
+[
+   {
+    "name" : "de.moduliertersingvogel.zk.Entry",
+    "fields" : [
+      { "name" : "title" },
+      { "name" : "text" },
+      { "name" : "tags" }
+    ]
+  }
+]

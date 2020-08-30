@@ -1,0 +1,20 @@
+[
+   {
+        "name": "org.xapian.StemImplementation",
+        "allDeclaredConstructors" : true,
+        "allPublicConstructors" : true,
+        "allDeclaredMethods" : true,
+        "allPublicMethods" : true,
+        "allDeclaredClasses" : true,
+        "allPublicClasses" : true
+    },
+   {
+        "name": "org.xapian.XapianJNI",
+        "allDeclaredConstructors" : true,
+        "allPublicConstructors" : true,
+        "allDeclaredMethods" : true,
+        "allPublicMethods" : true,
+        "allDeclaredClasses" : true,
+        "allPublicClasses" : true
+    }
+]
