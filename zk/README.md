@@ -57,7 +57,11 @@ mvn clean install
 
 ## Run jar file
 
-java -Djava.library.path=. -cp "~/.m2/repository/info/picocli/picocli/4.5.0/picocli-4.5.0.jar:~/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:~/.m2/repository/org/xapian/xapian/1.4.17/xapian-1.4.17.jar:target/zk-1.0-SNAPSHOT.jar" de.moduliertersingvogel.zk.ZK add tags=test title="Test Test" """Hallo Welt"""
+Adadpt the following command with your paths:
+
+```
+java -Djava.library.path=. -cp "/home/vagrant/.m2/repository/info/picocli/picocli/4.5.0/picocli-4.5.0.jar:/home/vagrant/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:/home/vagrant/.m2/repository/org/xapian/xapian/1.4.17/xapian-1.4.17.jar:target/zk-1.0-SNAPSHOT.jar" de.moduliertersingvogel.zk.ZK add tags=test title="Test Test" """Hallo Welt"""
+```
 
 ## Run graal image (optional)
 
