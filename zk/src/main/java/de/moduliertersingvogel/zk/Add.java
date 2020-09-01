@@ -24,13 +24,12 @@ public class Add implements Callable<Integer> {
 	String[] tags;
 
 	public Integer call() throws Exception {
-		Entry entry = new Entry(title, text, tags);
+		Entry entry = new Entry(title, text, tags, new String[0]);
 
 		String dbpath = "zk.xapian";
 		WritableDatabase db = new WritableDatabase(dbpath, Xapian.DB_CREATE_OR_OPEN);
 
 		Document document = new Document();
-    System.out.println(new Gson().toJson(entry));
 		document.setData(new Gson().toJson(entry));
 
 		TermGenerator termGenerator = new TermGenerator();
@@ -43,10 +42,12 @@ public class Add implements Callable<Integer> {
 			termGenerator.indexText(tag, i + 1, "XT");
 		}
 		// ID is title
-		document.addBooleanTerm(title);
+		document.addBooleanTerm("Q" + title);
 
 		db.addDocument(document);
 		db.commit();
+		
+		System.out.println(document.getDocId());
 
 		return 0;
 	}

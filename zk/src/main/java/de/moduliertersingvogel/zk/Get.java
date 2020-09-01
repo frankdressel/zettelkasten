@@ -1,5 +1,6 @@
 package de.moduliertersingvogel.zk;
 
+import java.util.Arrays;
 import java.util.concurrent.Callable;
 
 import org.xapian.WritableDatabase;
@@ -24,7 +25,10 @@ public class Get implements Callable<Integer> {
         
         Entry entry = new Gson().fromJson(db.getDocument(docID).getData(), Entry.class);
         System.out.println(entry.title);
+        System.out.println();
         System.out.println(entry.text);
+        System.out.println();
+        System.out.println(Arrays.deepToString(entry.links));
 		
 		return 0;
 	}
