@@ -30,6 +30,8 @@ public class Search implements Callable<Integer> {
         
         QueryParser queryParser = new QueryParser();
         queryParser.setStemmer(new Stem("en"));
+        queryParser.addPrefix("tag", "XT");
+        queryParser.addPrefix("title", "S");
         
         Query query = queryParser.parseQuery(searchterm);
         
@@ -45,7 +47,7 @@ public class Search implements Callable<Integer> {
         		long docID = mSetIterator.next();
         		
         		Entry entry = new Gson().fromJson(db.getDocument(docID).getData(), Entry.class);
-        		System.out.println(String.format("%s: %s", docID, entry.title));
+        		System.out.println(String.format("%s", entry.title));
         	}
         	offset = offset + returnsetSize;
         	mSet = enquire.getMSet(offset, returnsetSize);

@@ -3,6 +3,7 @@ package de.moduliertersingvogel.zk;
 import java.util.Arrays;
 import java.util.concurrent.Callable;
 
+import org.xapian.PostingIterator;
 import org.xapian.WritableDatabase;
 import org.xapian.Xapian;
 
@@ -15,7 +16,7 @@ import picocli.CommandLine.Parameters;
 public class Get implements Callable<Integer> {
 
 	@Parameters(index = "0")
-	long docID;
+	String title;
 
 	@Override
 	public Integer call() throws Exception {
@@ -23,12 +24,18 @@ public class Get implements Callable<Integer> {
 		String dbpath = "zk.xapian";
         WritableDatabase db = new WritableDatabase(dbpath, Xapian.DB_OPEN);
         
-        Entry entry = new Gson().fromJson(db.getDocument(docID).getData(), Entry.class);
-        System.out.println(entry.title);
-        System.out.println();
-        System.out.println(entry.text);
-        System.out.println();
-        System.out.println(Arrays.deepToString(entry.links));
+        PostingIterator postListBegin = db.postListBegin("Q" + title);
+		while(postListBegin.hasNext()) {
+			final long docID = postListBegin.next();
+			Entry entry = new Gson().fromJson(db.getDocument(docID).getData(), Entry.class);
+	        System.out.println(entry.title);
+	        System.out.println();
+	        System.out.println(entry.text);
+	        System.out.println();
+	        System.out.println(Arrays.deepToString(entry.tags));
+	        System.out.println();
+	        System.out.println(Arrays.deepToString(entry.links));
+		}
 		
 		return 0;
 	}

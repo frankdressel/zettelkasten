@@ -36,19 +36,19 @@ public class Add implements Callable<Integer> {
 		termGenerator.setStemmer(new Stem("en"));
 		termGenerator.setDocument(document);
 		termGenerator.indexText(entry.title, 1, "S");
+		termGenerator.indexText(entry.title);
 		termGenerator.indexText(entry.text);
 		for (int i = 0; i < tags.length; i++) {
 			String tag = tags[i];
 			termGenerator.indexText(tag, i + 1, "XT");
 		}
 		// ID is title
-		document.addBooleanTerm("Q" + title);
+		String idterm = "Q" + title;
+		document.addBooleanTerm(idterm);
 
-		db.addDocument(document);
+		db.replaceDocument(idterm, document);
 		db.commit();
 		
-		System.out.println(document.getDocId());
-
 		return 0;
 	}
 }
