@@ -41,7 +41,20 @@ mvn install:install-file -Dfile=<path-to-xapian.jar> -DgroupId=org.xapian -Darti
 
 ### Graal (optional)
 
-tbd
+Install the graalvm (change the versions below according to your needs):
+
+```
+wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.2.0/graalvm-ce-java11-linux-amd64-20.2.0.tar.gz
+tar -xzf graalvm-ce-java11-linux-amd64-20.2.0.tar.gz
+export PATH=<path to GraalVM>/bin:$PATH
+export JAVA_HOME=<path to GraalVM>
+```
+
+You need the native image component to build images. Install it with:
+
+```
+gu install native-image
+```
 
 ## Builld
 

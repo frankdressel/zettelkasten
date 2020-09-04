@@ -61,6 +61,44 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/lib</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${env.LD_LIBRARY_PATH}</directory>
+									<include>libxapian_jni.so</include>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-resources2</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<include>zk</include>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.graalvm.nativeimage</groupId>
 				<artifactId>native-image-maven-plugin</artifactId>
 				<version>20.2.0</version>
@@ -74,7 +112,7 @@
 				</executions>
 				<configuration>
 					<skip>false</skip>
-					<imageName>zk</imageName>
+					<imageName>_zk</imageName>
 					<mainClass>de.moduliertersingvogel.zk.ZK</mainClass>
 					<buildArgs>
 						--no-fallback
