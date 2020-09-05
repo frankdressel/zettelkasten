@@ -20,11 +20,9 @@ public class Add implements Callable<Integer> {
 	String text;
 	@Option(names = "title", description = "Title for the document", required = true)
 	String title;
-	@Option(names = "tags", description = "Tags for labeling the document", required = true)
-	String[] tags;
 
 	public Integer call() throws Exception {
-		Entry entry = new Entry(title, text, tags, new String[0]);
+		Entry entry = new Entry(title, text, new String[0]);
 
 		String dbpath = "zk.xapian";
 		WritableDatabase db = new WritableDatabase(dbpath, Xapian.DB_CREATE_OR_OPEN);
@@ -38,10 +36,7 @@ public class Add implements Callable<Integer> {
 		termGenerator.indexText(entry.title, 1, "S");
 		termGenerator.indexText(entry.title);
 		termGenerator.indexText(entry.text);
-		for (int i = 0; i < tags.length; i++) {
-			String tag = tags[i];
-			termGenerator.indexText(tag, i + 1, "XT");
-		}
+
 		// ID is title
 		String idterm = "Q" + title;
 		document.addBooleanTerm(idterm);

@@ -47,8 +47,8 @@ public class Link implements Callable<Integer> {
 				List<String> tmp2 = new ArrayList<String>(Arrays.asList(entry2.links));
 				tmp2.add(title1);
 				
-				doc1.setData(gson.toJson(new Entry(entry1.title, entry1.text, entry1.tags, tmp1.toArray(new String[0]))));
-				doc2.setData(gson.toJson(new Entry(entry2.title, entry2.text, entry2.tags, tmp2.toArray(new String[0]))));
+				doc1.setData(gson.toJson(new Entry(entry1.title, entry1.text, tmp1.toArray(new String[0]))));
+				doc2.setData(gson.toJson(new Entry(entry2.title, entry2.text, tmp2.toArray(new String[0]))));
 								
 				db.replaceDocument(docID1, doc1);
 				db.replaceDocument(docID2, doc2);

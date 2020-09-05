@@ -32,8 +32,6 @@ public class Get implements Callable<Integer> {
 	        System.out.println();
 	        System.out.println(entry.text);
 	        System.out.println();
-	        System.out.println(Arrays.deepToString(entry.tags));
-	        System.out.println();
 	        System.out.println(Arrays.deepToString(entry.links));
 		}
 		
