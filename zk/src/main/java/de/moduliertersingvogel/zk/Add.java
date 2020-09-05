@@ -18,11 +18,14 @@ import picocli.CommandLine.Parameters;
 public class Add implements Callable<Integer> {
 	@Parameters(index = "0")
 	String text;
-	@Option(names = "title", description = "Title for the document", required = true)
+	@Option(names = "title", description = "Title for the document", required = false)
 	String title;
 
 	public Integer call() throws Exception {
-		Entry entry = new Entry(title, text, new String[0]);
+		if(title== null) {
+			title = text.split("\n")[0];
+		}
+		final Entry entry = new Entry(title, text, new String[0]);
 
 		String dbpath = "zk.xapian";
 		WritableDatabase db = new WritableDatabase(dbpath, Xapian.DB_CREATE_OR_OPEN);

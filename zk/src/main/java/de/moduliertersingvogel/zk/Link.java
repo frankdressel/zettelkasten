@@ -19,14 +19,17 @@ import picocli.CommandLine.Parameters;
 public class Link implements Callable<Integer> {
 
 	@Parameters(index = "0")
-	String title1;
+	String title1_raw;
 	@Parameters(index = "1")
-	String title2;
+	String title2_raw;
 
 	public Integer call() throws Exception {
 		String dbpath = "zk.xapian";
 		WritableDatabase db = new WritableDatabase(dbpath, Xapian.DB_OPEN);
 		Gson gson = new Gson();
+		
+		final String title1 = title1_raw.split("\n")[0];
+		final String title2 = title2_raw.split("\n")[0];
 		
 		PostingIterator postListBegin1 = db.postListBegin("Q" + title1);
 		while(postListBegin1.hasNext()) {
