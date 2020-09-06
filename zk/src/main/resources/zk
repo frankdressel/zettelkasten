@@ -1,2 +1,4 @@
+mkdir -p $HOME/.zk
 DIR="$(cd "$(dirname "$0")" && pwd)"
+cd $HOME/.zk
 $DIR/_zk -Djava.library.path=$DIR/lib "$@"

@@ -2,9 +2,9 @@
    {
     "name" : "de.moduliertersingvogel.zk.Entry",
     "fields" : [
-      { "name" : "title" },
-      { "name" : "text" },
-      { "name" : "links" }
+      { "name" : "title", "allowWrite" : true },
+      { "name" : "text", "allowWrite" : true },
+      { "name" : "links", "allowWrite" : true }
     ]
   }
 ]

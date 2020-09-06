@@ -28,11 +28,7 @@ public class Get implements Callable<Integer> {
 		while(postListBegin.hasNext()) {
 			final long docID = postListBegin.next();
 			Entry entry = new Gson().fromJson(db.getDocument(docID).getData(), Entry.class);
-	        System.out.println(entry.title);
-	        System.out.println();
-	        System.out.println(entry.text);
-	        System.out.println();
-	        System.out.println(Arrays.deepToString(entry.links));
+	        System.out.println(new Gson().toJson(entry));
 		}
 		
 		return 0;

@@ -11,21 +11,15 @@ import org.xapian.Xapian;
 import com.google.gson.Gson;
 
 import picocli.CommandLine.Command;
-import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 @Command(name = "add", mixinStandardHelpOptions = true, description = "Add things to zettelkasten")
 public class Add implements Callable<Integer> {
 	@Parameters(index = "0")
 	String text;
-	@Option(names = "title", description = "Title for the document", required = false)
-	String title;
 
 	public Integer call() throws Exception {
-		if(title== null) {
-			title = text.split("\n")[0];
-		}
-		final Entry entry = new Entry(title, text, new String[0]);
+		final Entry entry = new Gson().fromJson(text, Entry.class);
 
 		String dbpath = "zk.xapian";
 		WritableDatabase db = new WritableDatabase(dbpath, Xapian.DB_CREATE_OR_OPEN);
@@ -41,7 +35,7 @@ public class Add implements Callable<Integer> {
 		termGenerator.indexText(entry.text);
 
 		// ID is title
-		String idterm = "Q" + title;
+		String idterm = "Q" + entry.title;
 		document.addBooleanTerm(idterm);
 
 		db.replaceDocument(idterm, document);
