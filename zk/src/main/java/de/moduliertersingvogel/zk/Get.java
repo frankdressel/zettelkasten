@@ -1,6 +1,5 @@
 package de.moduliertersingvogel.zk;
 
-import java.util.Arrays;
 import java.util.concurrent.Callable;
 
 import org.xapian.PostingIterator;
