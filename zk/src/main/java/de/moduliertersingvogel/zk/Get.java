@@ -4,10 +4,10 @@ import java.util.concurrent.Callable;
 
 import org.xapian.PostingIterator;
 import org.xapian.WritableDatabase;
-import org.xapian.Xapian;
 
 import com.google.gson.Gson;
 
+import de.moduliertersingvogel.zk.provider.DBProvider;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
@@ -20,8 +20,7 @@ public class Get implements Callable<Integer> {
 	@Override
 	public Integer call() throws Exception {
 		
-		String dbpath = "zk.xapian";
-        WritableDatabase db = new WritableDatabase(dbpath, Xapian.DB_OPEN);
+        WritableDatabase db = DBProvider.getDatabase();
         
         PostingIterator postListBegin = db.postListBegin("Q" + title);
 		while(postListBegin.hasNext()) {

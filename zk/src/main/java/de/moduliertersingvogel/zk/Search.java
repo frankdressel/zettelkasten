@@ -9,10 +9,10 @@ import org.xapian.Query;
 import org.xapian.QueryParser;
 import org.xapian.Stem;
 import org.xapian.WritableDatabase;
-import org.xapian.Xapian;
 
 import com.google.gson.Gson;
 
+import de.moduliertersingvogel.zk.provider.DBProvider;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
@@ -25,8 +25,7 @@ public class Search implements Callable<Integer> {
 	@Override
 	public Integer call() throws Exception {
 		
-		String dbpath = "zk.xapian";
-        WritableDatabase db = new WritableDatabase(dbpath, Xapian.DB_OPEN);
+        WritableDatabase db = DBProvider.getDatabase();
         
         QueryParser queryParser = new QueryParser();
         queryParser.setStemmer(new Stem("en"));
