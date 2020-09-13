@@ -92,7 +92,7 @@
 							<outputDirectory>${basedir}/target/lib</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${env.LD_LIBRARY_PATH}</directory>
+									<directory>~/.local/lib</directory>
 									<include>libxapian_jni.so</include>
 								</resource>
 							</resources>

@@ -56,6 +56,13 @@ You need the native image component to build images. Install it with:
 gu install native-image
 ```
 
+### jq
+
+```
+sudo apt-get install jq
+```
+
+
 ## Builld
 
 ```
@@ -65,7 +72,7 @@ mvn clean package
 Optionally for the graal image run:
 
 ```
-mvn clean install
+mvn clean package install
 ```
 
 ## Run jar file
@@ -73,12 +80,12 @@ mvn clean install
 Adadpt the following command with your paths:
 
 ```
-java -Djava.library.path=. -cp "/home/vagrant/.m2/repository/info/picocli/picocli/4.5.0/picocli-4.5.0.jar:/home/vagrant/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:/home/vagrant/.m2/repository/org/xapian/xapian/1.4.17/xapian-1.4.17.jar:target/zk-1.0-SNAPSHOT.jar" de.moduliertersingvogel.zk.ZK add tags=test title="Test Test" """Hallo Welt"""
+java -Djava.library.path=. -cp "<path to your home>/.m2/repository/info/picocli/picocli/4.5.0/picocli-4.5.0.jar:<path to your home>/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:<path to your home>/.m2/repository/org/xapian/xapian/1.4.17/xapian-1.4.17.jar:target/zk-1.0-SNAPSHOT.jar" de.moduliertersingvogel.zk.ZK add tags=test title="Test Test" """Hallo Welt"""
 ```
 
 ## Run graal image (optional)
 
-zk add tags=test title="Test Test" """Hallo Welt"""
+zk add """{"title": "Test", "text": "Hallo Welt", "links": []}"""
 
 ## Use xapian-delve to inspect the indexed documents
 
