@@ -32,7 +32,7 @@ public class Search implements Callable<Integer> {
         queryParser.addPrefix("tag", "XT");
         queryParser.addPrefix("title", "S");
         
-        Query query = queryParser.parseQuery(searchterm);
+        Query query = queryParser.parseQuery(searchterm, QueryParser.feature_flag.FLAG_WILDCARD.swigValue());
         
         Enquire enquire = new Enquire(db);
         enquire.setQuery(query);
