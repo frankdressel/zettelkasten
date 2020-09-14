@@ -95,4 +95,25 @@ xapian-delve -r 1 -d zk.xapian
 
 ## Usage
 
-tbd
+### Generate an empty template
+
+```
+zk template
+```
+
+### Add a new entry
+
+```
+zk add """<json with escaped quotes>"""
+
+### Search
+
+```
+zk search <searchterm, use * as wildcard>
+```
+
+### Retrieve
+
+```
+zk get <title>
+```
