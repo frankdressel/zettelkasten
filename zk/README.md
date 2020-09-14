@@ -105,6 +105,7 @@ zk template
 
 ```
 zk add """<json with escaped quotes>"""
+```
 
 ### Search
 
