@@ -92,7 +92,7 @@
 							<outputDirectory>${basedir}/target/lib</outputDirectory>
 							<resources>
 								<resource>
-									<directory>~/.local/lib</directory>
+									<directory>/xapian-bindings-1.4.17/java/built</directory>
 									<include>libxapian_jni.so</include>
 								</resource>
 							</resources>
