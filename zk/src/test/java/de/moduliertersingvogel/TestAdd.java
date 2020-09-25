@@ -43,7 +43,7 @@ class TestAdd {
 							scanner.useDelimiter("\\Z");
 							String content = scanner.next();
 							return content.contains("Testtitle");
-						} catch (IOException e) {
+						} catch (Exception e) {
 							System.err.println(e);
 							return false;
 						}
