@@ -138,8 +138,6 @@
 						-H:+JNI
 						-H:JNIConfigurationFiles=${project.basedir}/src/main/resources/jni_config.json
 						-H:ReflectionConfigurationFiles=${project.basedir}/src/main/resources/reflection_config.json
-						--libc=musl
-						--static
 					</buildArgs>
 				</configuration>
 			</plugin>
