@@ -75,7 +75,15 @@ Optionally for the graal image run:
 mvn clean package install
 ```
 
-## Run jar file
+Optionally for the docker image run:
+
+```
+dockr build -t zettelkasten .
+```
+
+## Run
+
+### Run jar file
 
 Adadpt the following command with your paths:
 
@@ -83,9 +91,17 @@ Adadpt the following command with your paths:
 java -Djava.library.path=<path to your libxapian_jni.so> -cp "<path to your home>/.m2/repository/info/picocli/picocli/4.5.0/picocli-4.5.0.jar:<path to your home>/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:<path to your home>/.m2/repository/org/xapian/xapian/1.4.17/xapian-1.4.17.jar:target/zk-1.0-SNAPSHOT.jar" de.moduliertersingvogel.zk.ZK add """{"title": "Test", "text": "Hallo Welt", "links": []}"""
 ```
 
-## Run graal image (optional)
+### Run graal image (optional)
 
+```
 zk add """{"title": "Test", "text": "Hallo Welt", "links": []}"""
+```
+
+### Run docker image
+
+```
+docker run --rm -it -v <absolute path to the directory, where the data should be stored>:/zk zettelkasten /zettelkasten/zk add """{"title": "Test", "text": "Hallo Welt", "links": []}"""
+```
 
 ## Use xapian-delve to inspect the indexed documents
 
