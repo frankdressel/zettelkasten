@@ -1,4 +1,11 @@
 #! /bin/bash
+
 DIR="$(cd "$(dirname "$0")" && pwd)"
 cd $DIR
+
+if [ ! -f libxapian_jni.so ]; then
+  lib=$(find / -iname libxapian_jni.so 2>/dev/null | head -n 1)
+  cp $lib .
+fi
+
 $DIR/_zk "$@"
