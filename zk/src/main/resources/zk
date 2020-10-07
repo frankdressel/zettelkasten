@@ -4,7 +4,9 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 cd $DIR
 
 if [ ! -f libxapian_jni.so ]; then
+  echo "Copying libxapian_jni.so to current folder"
   lib=$(find / -iname libxapian_jni.so 2>/dev/null | head -n 1)
+  echo "Found libxapian_jni.so here: $lib"
   cp $lib .
 fi
 
