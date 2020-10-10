@@ -1,6 +1,10 @@
 FROM ubuntu:latest AS builder
 
-RUN apt-get update && apt-get install -y wget git xz-utils g++ zlib1g-dev build-essential musl musl-tools libz-dev
+ENV LANG C.UTF-8
+ENV LANGUAGE C
+ENV LC_ALL C.UTF-8
+
+RUN apt-get update && apt-get install -y wget git xz-utils g++ zlib1g-dev build-essential
 RUN wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.2.0/graalvm-ce-java11-linux-amd64-20.2.0.tar.gz && tar -xzf graalvm-ce-java11-linux-amd64-20.2.0.tar.gz
 ENV PATH=/graalvm-ce-java11-20.2.0/bin:$PATH
 ENV JAVA_HOME=/graalvm-ce-java11-20.2.0
@@ -21,6 +25,9 @@ RUN cd /zettelkasten/zk && mvn clean package install
 
 FROM ubuntu:latest
 RUN mkdir /zettelkasten
+ENV LANG C.UTF-8
+ENV LANGUAGE C
+ENV LC_ALL C.UTF-8
 COPY --from=builder /zettelkasten/zk/target/zk /zettelkasten/
 COPY --from=builder /zettelkasten/zk/target/_zk /zettelkasten/
 COPY --from=builder /xapian-bindings-1.4.17/java/built/libxapian_jni.so /zettelkasten/
