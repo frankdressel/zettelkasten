@@ -17,8 +17,8 @@ import org.xapian.Xapian;
 
 import com.google.gson.Gson;
 
-import de.moduliertersingvogel.zk.Entry;
 import de.moduliertersingvogel.zk.ZK;
+import de.moduliertersingvogel.zk.model.Entry;
 import de.moduliertersingvogel.zk.provider.DBProvider;
 import picocli.CommandLine;
 

@@ -1,6 +1,6 @@
 [
    {
-    "name" : "de.moduliertersingvogel.zk.Entry",
+    "name" : "de.moduliertersingvogel.zk.model.Entry",
     "fields" : [
       { "name" : "title", "allowWrite" : true },
       { "name" : "text", "allowWrite" : true },

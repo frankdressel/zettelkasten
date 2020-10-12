@@ -4,6 +4,7 @@ import java.util.concurrent.Callable;
 
 import com.google.gson.Gson;
 
+import de.moduliertersingvogel.zk.model.Entry;
 import picocli.CommandLine.Command;
 
 @Command(name = "template", mixinStandardHelpOptions = true, description = "Show an entry template")

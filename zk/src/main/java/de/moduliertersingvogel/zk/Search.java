@@ -12,6 +12,7 @@ import org.xapian.WritableDatabase;
 
 import com.google.gson.Gson;
 
+import de.moduliertersingvogel.zk.model.Entry;
 import de.moduliertersingvogel.zk.provider.DBProvider;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;

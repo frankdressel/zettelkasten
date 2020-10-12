@@ -1,4 +1,4 @@
-package de.moduliertersingvogel.zk;
+package de.moduliertersingvogel.zk.model;
 
 public final class Entry {
 	public final String title;
