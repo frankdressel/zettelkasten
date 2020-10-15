@@ -30,7 +30,7 @@ public class ListTitles implements Callable<Integer> {
 	        titles.add(entry.title);
 		}
 		
-		titles.sort((a, b) -> a.compareTo(b));
+		titles.sort((a, b) -> a.toLowerCase().compareTo(b.toLowerCase()));
 		System.out.println(titles.stream().collect(Collectors.joining("\n")));
 		
 		return 0;

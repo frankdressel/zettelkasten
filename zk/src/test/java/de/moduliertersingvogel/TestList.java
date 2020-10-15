@@ -38,8 +38,10 @@ class TestList {
 			CommandLine cmd = new CommandLine(zk);
 			final String jsonContent1 = new Gson().toJson(new Entry("Testtitle", "", new String[0]));
 			final String jsonContent2 = new Gson().toJson(new Entry("Hallo Welt", "", new String[0]));
+			final String jsonContent3 = new Gson().toJson(new Entry("kakao", "", new String[0]));
 			cmd.execute("add", jsonContent1);
 			cmd.execute("add", jsonContent2);
+			cmd.execute("add", jsonContent3);
 			
 			out.reset();
 	        err.reset();
@@ -49,7 +51,7 @@ class TestList {
 			cmd.execute("list");
 			
 			// Each entry should be on its own line and thus a line break is expected.
-			assertEquals("Hallo Welt\nTesttitle\n", out.toString());
+			assertEquals("Hallo Welt\nkakao\nTesttitle\n", out.toString());
 			
 			// Reset output stream.
 			System.setOut(originalOut);
