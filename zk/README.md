@@ -63,7 +63,7 @@ sudo apt-get install jq
 ```
 
 
-## Builld
+## Build
 
 ```
 mvn clean package
@@ -125,12 +125,30 @@ zk add """<json with escaped quotes>"""
 
 ### Search
 
+Please escape search terms including spaces with quotes.
+
 ```
 zk search <searchterm, use * as wildcard>
 ```
 
 ### Retrieve
 
+Please escape terms including spaces with quotes.
+
 ```
 zk get <title>
+```
+
+### Get list of existing entries (alphabetically sortes)
+
+```
+zk list
+```
+
+### Delete an entry
+
+Please escape terms including spaces with quotes.
+
+```
+zk delete <title>
 ```
