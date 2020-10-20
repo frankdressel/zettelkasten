@@ -23,8 +23,8 @@ COPY . /zettelkasten/zk/
 RUN cd /zettelkasten/zk && mvn clean package install
 
 
-FROM ubuntu:latest
-RUN mkdir /zettelkasten
+FROM ubuntu:20.04
+RUN mkdir /zettelkasten && mkdir /zk
 ENV LANG C.UTF-8
 ENV LANGUAGE C
 ENV LC_ALL C.UTF-8
@@ -36,3 +36,12 @@ RUN echo base=/zk >> /zettelkasten/zk.conf
 RUN ln -s /usr/local/lib/libxapian.so /usr/local/lib/libxapian.so.30 
 RUN ln -s /usr/local/lib/libxapian.so /usr/local/lib/libxapian.so.30.10.3
 RUN ldconfig
+
+RUN apt-get update
+RUN apt-get install -y ca-certificates
+RUN apt-get install --no-install-recommends -y vim
+RUN apt-get install --no-install-recommends -y git
+COPY src/main/resources/vim/.vimrc /root/.vimrc
+RUN mkdir -p /root/.vim/UltiSnips
+COPY src/main/resources/vim/all.snippets /root/.vim/UltiSnips/all.snippets
+RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && vim +PluginInstall +qall
