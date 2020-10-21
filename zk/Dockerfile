@@ -41,6 +41,7 @@ RUN apt-get update
 RUN apt-get install -y ca-certificates
 RUN apt-get install --no-install-recommends -y vim
 RUN apt-get install --no-install-recommends -y git
+RUN apt-get install --no-install-recommends -y jq
 COPY src/main/resources/vim/.vimrc /root/.vimrc
 RUN mkdir -p /root/.vim/UltiSnips
 COPY src/main/resources/vim/all.snippets /root/.vim/UltiSnips/all.snippets
