@@ -22,7 +22,6 @@ set shiftwidth=2            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
 set number                  " add line numbers
 filetype plugin indent on   " allows auto-indenting depending on file type
-syntax on                   " syntax highlighting
 
 " Setting for ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -43,3 +42,6 @@ map ;kt :Zkt<CR>
 map ;ka :Zka<CR>
 
 command! BD bd!
+
+set laststatus=2
+set statusline=Zettelkasten
