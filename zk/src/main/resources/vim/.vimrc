@@ -42,6 +42,7 @@ map ;kt :Zkt<CR>
 map ;ka :Zka<CR>
 
 command! BD bd!
+command! Q qa!
 
 set laststatus=2
 set statusline=Zettelkasten
