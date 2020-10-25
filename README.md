@@ -4,7 +4,13 @@ This is an implementtion of the [zettelkasten knowledge management method](https
 
 ## Requirements
 
-### Xapian
+### Container based version (preferred for usage)
+
+Something able to deal with Dockerfiles ([docker](https://www.docker.com/), [podman](https://podman.io/),...
+
+### Non-container based version (preferred for development)
+
+#### Xapian
 
 (Xapian)[https://xapian.org/] is needed for the full text search and indexing. The process of installation (tested with ubuntu 20.04) is essentially:
 
@@ -18,7 +24,7 @@ sudo make install
 sudo ldconfig
 ```
 
-### Xapian bindings
+#### Xapian bindings
 
 If you want to install zettelkasten from source, you need the java bindings for the xapian api. The process of installation (tested with ubuntu 20.04) is essentially:
 
@@ -41,7 +47,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<path-to-libxapian_jni.so>
 mvn install:install-file -Dfile=<path-to-xapian.jar> -DgroupId=org.xapian -DartifactId=xapian -Dversion=1.4.17 -Dpackaging=jar
 ```
 
-### Graal (optional)
+#### Graal (optional)
 
 Install the graalvm (change the versions below according to your needs):
 
@@ -58,7 +64,7 @@ You need the native image component to build images. Install it with:
 gu install native-image
 ```
 
-### jq
+#### jq
 
 ```
 sudo apt-get install jq
@@ -66,6 +72,14 @@ sudo apt-get install jq
 
 
 ## Build
+
+### Container based version (preferred for usage)
+
+```
+docker build -t zettelkasten .
+```
+
+### Non-container based version (preferred for development)
 
 ```
 mvn clean package
@@ -77,13 +91,13 @@ Optionally for the graal image run:
 mvn clean package install
 ```
 
-Optionally for the docker image run:
-
-```
-docker build -t zettelkasten .
-```
-
 ## Run
+
+### Run docker image
+
+```
+docker run --rm -it -v <absolute path to the directory, where the data should be stored>:/zk zettelkasten vim
+```
 
 ### Run jar file
 
@@ -97,18 +111,6 @@ java -Djava.library.path=<path to your libxapian_jni.so> -cp "<path to your home
 
 ```
 zk add """{"title": "Test", "text": "Hallo Welt", "links": []}"""
-```
-
-### Run docker image
-
-```
-docker run --rm -it -v <absolute path to the directory, where the data should be stored>:/zk zettelkasten vim
-```
-
-## Use xapian-delve to inspect the indexed documents
-
-```
-xapian-delve -r 1 -d zk.xapian
 ```
 
 ## Usage
