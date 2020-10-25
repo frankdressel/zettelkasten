@@ -80,7 +80,7 @@ mvn clean package install
 Optionally for the docker image run:
 
 ```
-dockr build -t zettelkasten .
+docker build -t zettelkasten .
 ```
 
 ## Run
@@ -102,7 +102,7 @@ zk add """{"title": "Test", "text": "Hallo Welt", "links": []}"""
 ### Run docker image
 
 ```
-docker run --rm -it -v <absolute path to the directory, where the data should be stored>:/zk zettelkasten /zettelkasten/zk add """{"title": "Test", "text": "Hallo Welt", "links": []}"""
+docker run --rm -it -v <absolute path to the directory, where the data should be stored>:/zk zettelkasten vim
 ```
 
 ## Use xapian-delve to inspect the indexed documents
@@ -112,6 +112,22 @@ xapian-delve -r 1 -d zk.xapian
 ```
 
 ## Usage
+
+### Vim in docker
+
+In the vim editor provided by the docker image, the following shortcuts can be used:
+
+- _;kl_: Normal mode: Lists the title sof all available cards
+- _;kt_: Normal mode: Opens a new buffer with an empty card template
+- _;ka_: Normal mode: Adds the text of the current buffer as card (if possible) or updates the card with the same title
+- _;kg_: Get the card with the title equal to the current line. Useful in combination with _;kl_.
+
+The following commands are available:
+
+- _:Zks <arg>_: Search the term provided as _arg_. In case the term contains spaces, the whole term needs to be escaped with quotes. Wildcard search is possible with *. Title, text and links of a card are searched.
+- _:Zkd <arg>_: Delete the card with the title _arg_. In case the title contains spaces, the whole term needs to be escaped with quotes.
+
+### Cli
 
 ### Generate an empty template
 
