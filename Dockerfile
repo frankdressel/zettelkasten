@@ -30,6 +30,7 @@ ENV LANGUAGE C
 ENV LC_ALL C.UTF-8
 COPY --from=builder /zettelkasten/zk/target/zk /zettelkasten/
 COPY --from=builder /zettelkasten/zk/target/_zk /zettelkasten/
+RUN chmod u+x /zettelkasten/zk
 COPY --from=builder /xapian-bindings-1.4.17/java/built/libxapian_jni.so /zettelkasten/
 COPY --from=builder /usr/local/lib/libxapian.so /usr/local/lib/
 RUN echo base=/zk >> /zettelkasten/zk.conf

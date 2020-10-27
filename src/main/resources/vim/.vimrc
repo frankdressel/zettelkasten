@@ -28,8 +28,8 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-command! Zkt new | /zettelkasten/zk template | jq .
-command! Zka let tn=tempname() | call writefile(getline(1, '$'), tn) | execute "!/zettelkasten/zk add \"\"\"$(cat " . tn . ")\"\"\"" | call delete(tn)
+command! Zkt new | execute ".!/zettelkasten/zk template | jq ."
+command! Zka let tn=tempname() | call writefile(getline(1, '$'), tn) | silent execute "!/zettelkasten/zk add \"\"\"$(cat " . tn . ")\"\"\"" | execute ':redraw!' | call delete(tn)
 command! -nargs=1 Zks new | .!/zettelkasten/zk search <args>
 command! -nargs=1 Zkg new | .!/zettelkasten/zk get <args> | jq .
 command! Zkgl let cur=getline(".") | new | execute ".!/zettelkasten/zk get \"" . cur . "\" | jq ."
@@ -46,3 +46,5 @@ command! Q qa!
 
 set laststatus=2
 set statusline=Zettelkasten
+set title
+set titlestring=Zettelkasten
