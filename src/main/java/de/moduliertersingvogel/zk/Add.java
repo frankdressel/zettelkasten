@@ -20,28 +20,34 @@ public class Add implements Callable<Integer> {
 	String text;
 
 	public Integer call() {
-		final Entry entry = new Gson().fromJson(text, Entry.class);
+    try {
+      final Entry entry = new Gson().fromJson(text, Entry.class);
 
-		WritableDatabase db = DBProvider.getDatabase();
+      WritableDatabase db = DBProvider.getDatabase();
 
-		Document document = new Document();
-		document.setData(new Gson().toJson(entry));
+      Document document = new Document();
+      document.setData(new Gson().toJson(entry));
 
-		TermGenerator termGenerator = new TermGenerator();
-		termGenerator.setStemmer(new Stem("en"));
-		termGenerator.setDocument(document);
-		termGenerator.indexText(entry.title, 1, "S");
-		termGenerator.indexText(entry.title);
-		termGenerator.indexText(entry.text);
+      TermGenerator termGenerator = new TermGenerator();
+      termGenerator.setStemmer(new Stem("en"));
+      termGenerator.setDocument(document);
+      termGenerator.indexText(entry.title, 1, "S");
+      termGenerator.indexText(entry.title);
+      termGenerator.indexText(entry.text);
 
-		// ID is title
-		String idterm = "Q" + entry.title;
-		document.addBooleanTerm(idterm);
+      // ID is title
+      String idterm = "Q" + entry.title;
+      document.addBooleanTerm(idterm);
 
-		db.replaceDocument(idterm, document);
-		db.commit();
-		db.flush();
+      db.replaceDocument(idterm, document);
+      db.commit();
+      db.flush();
 		
-		return 0;
+      return 0;
+    }
+    catch(Exception e) {
+      System.err.println(e);
+      return 1;
+    }
 	}
 }

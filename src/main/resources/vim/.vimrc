@@ -29,7 +29,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 command! Zkt new | execute ".!/zettelkasten/zk template | jq ."
-command! Zka let con=join(getline(1, '$')) | execute "%!/zettelkasten/zk add ''" . shellescape(con, 1) . "''; echo " . shellescape(con, 1) . " | jq '.'"
+command! Zka let con=join(getline(1, '$')) | execute "%!/zettelkasten/zk add ''" . shellescape(con, 1) . "'' 2>/dev/null; echo " . shellescape(con, 1) . " | jq '.' 2>/dev/null"  | if v:shell_error==0 | echom "Wrote card" | else | echom "Could not write card" | execute "u" | endif
 command! -nargs=1 Zks new | .!/zettelkasten/zk search <args>
 command! -nargs=1 Zkg new | .!/zettelkasten/zk get <args> | jq .
 command! Zkgl let cur=getline(".") | new | execute ".!/zettelkasten/zk get \"" . cur . "\" | jq ."
