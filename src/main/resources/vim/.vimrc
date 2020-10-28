@@ -29,7 +29,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 command! Zkt new | execute ".!/zettelkasten/zk template | jq ."
-command! Zka let tn=tempname() | call writefile(getline(1, '$'), tn) | silent execute "!/zettelkasten/zk add \"\"\"$(cat " . tn . ")\"\"\"" | execute ':redraw!' | call delete(tn)
+command! Zka let con=join(getline(1, '$')) | execute "%!/zettelkasten/zk add ''" . shellescape(con, 1) . "''; echo " . shellescape(con, 1) . " | jq '.'"
 command! -nargs=1 Zks new | .!/zettelkasten/zk search <args>
 command! -nargs=1 Zkg new | .!/zettelkasten/zk get <args> | jq .
 command! Zkgl let cur=getline(".") | new | execute ".!/zettelkasten/zk get \"" . cur . "\" | jq ."
