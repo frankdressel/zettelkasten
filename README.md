@@ -6,7 +6,7 @@ This is an implementtion of the [zettelkasten knowledge management method](https
 
 ### Use Vim to create new cards easily and link them
 
-<img src="/images/create.gif" width="500" height="500"/>
+<img src="/images/create.gif" width="640" height="386"/>
 
 ## Requirements
 
