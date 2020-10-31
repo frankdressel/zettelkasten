@@ -2,6 +2,12 @@
 
 This is an implementtion of the [zettelkasten knowledge management method](https://en.wikipedia.org/wiki/Zettelkasten). It aims to be as flexible to the users need as possible and makes minimal assumptions about formatting. Cards are created only with a title, a description and a list of links; each in plain text. The implementation is designed as cli and comes with a simple [vim](https://www.vim.org/) integration within a [docker](https://www.docker.com/) container.
 
+## Demo
+
+### Use Vim to create new cards easily and link them
+
+<img src="/images/create.gif" width="500" height="500"/>
+
 ## Requirements
 
 ### Container based version (preferred for usage)
