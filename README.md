@@ -8,21 +8,21 @@ This is an implementtion of the [zettelkasten knowledge management method](https
 
 <figure>
   <img src="/images/create.gif" width="640" height="386"/>
-  <figcaption>Open the <a href="https://github.com/SirVer/ultisnips">UltiSnips</a> template by typing kat&lt;Tab&gt; in insert mode. Navigate between the title, body and links with &lt;Ctrl-b&gt; and &lt;Ctrl-z&gt;. You can save in normal mode with the shortcut &lt;ka&gt;</figcaption>
+  <figcaption>Open the <a href="https://github.com/SirVer/ultisnips">UltiSnips</a> template by typing &lt;kat-Tab&gt; in insert mode. Navigate between the title, body and links with &lt;Ctrl-b&gt; and &lt;Ctrl-z&gt;. You can save in normal mode with the shortcut &lt;;ka&gt;</figcaption>
 </figure>
 
 ### Use Vim to list cards and get selected ones
 
 <figure>
   <img src="/images/listget.gif" width="640" height="386"/>
-  <figcaption>Type &lt;kl&gt; in normal mode to get an alphabetically sorted list of card titles. Get the one where the cursor is located with &lt;kg&gt; in normal mode.</figcaption>
+  <figcaption>Type &lt;;kl&gt; in normal mode to get an alphabetically sorted list of card titles. Get the one where the cursor is located with &lt;;kg&gt; in normal mode.</figcaption>
 </figure>
 
 ### Use Vim to do a wildcard search and get selected search results
 
 <figure>
-  <img src="/images/create.gif" width="640" height="386"/>
-  <figcaption>Type &lt;Zks&gt; followed by the search term (separated with a space) in normal mode. If the search term contains spaces, escape the whole term with (double) quotes. Get the one where the cursor is located with &lt;kg&gt; in normal mode.</figcaption>
+  <img src="/images/searchget.gif" width="640" height="386"/>
+  <figcaption>Type &lt;:Zks&gt; followed by the search term (separated with a space) in normal mode. If the search term contains spaces, escape the whole term with (double) quotes. Get the one where the cursor is located with &lt;;kg&gt; in normal mode.</figcaption>
 </figure>
 
 ## Requirements
